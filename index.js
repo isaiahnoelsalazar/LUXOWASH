@@ -490,6 +490,7 @@ function renderActivityRecordPage(){
     page.appendChild(table);
 }
 
+toggleDarkMode();
 people();
 renderEmployeePage();
 renderCustomerPage();
