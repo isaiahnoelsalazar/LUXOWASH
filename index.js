@@ -217,6 +217,24 @@ function switchServicesAndPackagesTab(index){
     }
 }
 
+function initData(){
+    let server = "sql.bsite.net\\MSSQL2016";
+    let database = "saiasamazingaspsite_SampleDB";
+    let username = "saiasamazingaspsite_SampleDB";
+    let password = "DBSamplePW";
+    let command = "CREATE TABLE LUXOWASH_EmployeesDetails (id text, fname text, mname text, lname text)";
+    let link = `https://insgi-be.vercel.app/mssql_execute?&server=${server}&database=${database}&username=${username}&password=${password}&execute=${encodeURIComponent(command)}`;
+    let req = new XMLHttpRequest();
+    req.open("POST", link, true);
+    req.onreadystatechange = function (){
+        if (req.status == 200){
+            let res = req.response;
+            alert(res);
+        }
+    };
+    req.send();
+}
+
 const sample_employee_data = [
     "1<SEP>TOKAI TEIO<SEP>2026-02-28 08:00:00 AM<SEP>2026-02-28 05:00:00 PM",
     "2<SEP>SYMBOLI RUDOLF<SEP>2026-02-28 11:00:00 AM<SEP>",
@@ -492,6 +510,7 @@ function renderActivityRecordPage(){
 
 toggleDarkMode();
 people();
+initData();
 renderEmployeePage();
 renderCustomerPage();
 renderVehiclePage();
